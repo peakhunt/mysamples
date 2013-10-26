@@ -14,7 +14,8 @@ OBJECTS  :=       cfg_loader.o\
                   mem_tracker.o\
                   timer.o\
                   cfg_util.o\
-                  rbtree.o
+                  rbtree.o\
+                  hex_util.o
 
 AUTO_GENERATED	:=	cfg_parser.c\
 						cfg_parser.h\
