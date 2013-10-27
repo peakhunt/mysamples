@@ -50,9 +50,9 @@
 %%
 
 cfg_list: 
-         cfg_expression 
-      |  cfg_list cfg_expression
-;
+         cfg_expression cfg_list
+      |
+
             
 cfg_expression: PARAMETER ASSIGNMENT values { addConfigParam(_cfg, $1, $3); }
 ;
