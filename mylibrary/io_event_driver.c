@@ -105,8 +105,13 @@ check_select(IOEventDriver* driver, fd_set* set, IOEventType type)
 
    while(!list_empty(&driver->working_set[type]))
    {
+       p = list_first_entry(&driver->working_set[type], IODriverElement, next);
+       list_del_init(&p->next);
+       list_add_tail(&p->next, &driver->io_set[type]);
+#if 0 // bug. 2014.mar.23
       list_del(&p->next);
       list_add_tail(&p->next, &driver->io_set[type]);
+#endif
       p->cb(driver, p->fd, type, p->priv);
    }
 }
